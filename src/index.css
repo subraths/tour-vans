@@ -51,7 +51,8 @@ nav a:last-child {
 
 section {
   padding: 4em 2em;
-  background: url("../src/images/image 54.png") no-repeat center center;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)),
+    url("../src/images/image 54.png") no-repeat center center;
   color: white;
   max-width: 760px;
 }
