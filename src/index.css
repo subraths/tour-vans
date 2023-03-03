@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Source+Sans+Pro:wght@400;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+nav {
+  display: flex;
+  padding: 2em 1em;
+  background: #fff7ed;
+}
+
+nav img {
+  width: 9rem;
+}
+
+nav .logo-link {
+  margin-right: auto;
+}
+
+nav a {
+  text-decoration: none;
+  color: #4d4d4d;
+  margin-right: 1em;
+}
+
+nav a:focus {
+  color: #000;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+nav a:last-child {
+  margin-right: 0;
+}
+
+/* Home component */
+
+section {
+  padding: 4em 2em;
+  min-height: 400px;
+}
+
+/* Footer Component */
+
+footer {
+  text-align: center;
+  padding: 1.5em 0;
+  font-size: 0.875rem;
+  background: #252525;
+  color: #aaaaaa;
+  font-weight: 500;
+}
+
+/* vans */
+.vans {
+  background: green;
+}
