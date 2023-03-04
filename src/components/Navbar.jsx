@@ -7,6 +7,7 @@ const Navbar = () => (
       <Link to="/" className="logo-link">
         <img src={logo} />
       </Link>
+      <Link to="/host">Host</Link>
       <Link to="/about">About</Link>
       <Link to="/vans">Vans</Link>
     </nav>

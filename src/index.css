@@ -9,6 +9,8 @@
 body {
   font-family: "Source Sans Pro", sans-serif;
   background: #fff7ed;
+  max-width: 780px;
+  margin: 0 auto;
 }
 
 .nav-container {
@@ -106,6 +108,12 @@ footer {
 }
 
 /* vantemplate */
+
+/* .van-tile { */
+/*   border: 1px #000 solid; */
+/*   padding: 0.5em; */
+/*   border-radius: 5px; */
+/* } */
 
 .van-tile a {
   text-decoration: none;
