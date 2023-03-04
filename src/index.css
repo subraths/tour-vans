@@ -8,12 +8,18 @@
 
 body {
   font-family: "Source Sans Pro", sans-serif;
+  background: #fff7ed;
+}
+
+.nav-container {
+  background: #fff7ed;
 }
 
 nav {
   display: flex;
   padding: 2em 1em;
-  background: #fff7ed;
+  margin: 0 auto;
+  max-width: 780px;
 }
 
 nav img {
@@ -30,7 +36,8 @@ nav a {
   margin-right: 1em;
 }
 
-nav a:focus {
+nav a:focus,
+nav a:hover {
   color: #000;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -47,6 +54,7 @@ nav a:last-child {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: #fff7ed;
 }
 
 section {
@@ -86,5 +94,97 @@ footer {
 
 /* vans */
 .vans {
-  background: green;
+  padding: 1em;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.vans h1 {
+  margin-bottom: 1em;
+}
+
+/* vantemplate */
+
+.van-tile a {
+  text-decoration: none;
+  color: #161616;
+}
+
+.van-tile img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.van-info {
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5em 0;
+}
+
+.van-type {
+  display: inline-block;
+  padding: 0.5em 1.5em;
+  color: #ffead0;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.van-type.simple {
+  background: #e17654;
+}
+
+.van-type.rugged {
+  background: #115e59;
+}
+
+.van-type.luxury {
+  background: #161616;
+}
+
+.vans-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1em;
+}
+
+/* van-detail */
+
+.van-detail {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+.van-detail img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-bottom: 2em;
+}
+
+.van-detail h1 {
+  margin: 1em 0;
+}
+
+.van-detail h3 {
+  margin-bottom: 1em;
+}
+
+.van-detail p {
+  padding-bottom: 2em;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1.125rem;
+  padding: 0.5em 1em;
+  display: inline-block;
+  width: 100%;
+  background: #ff8c38;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
 }
