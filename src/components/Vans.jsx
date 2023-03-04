@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import data from "../data";
 
 const Vans = () => {
-  const [vans] = useState(data);
+  const [vans, setVans] = useState([]);
+
+  const fetchData = async () => {
+    const res = await fetch("/api/vans");
+    const data = await res.json();
+    setVans(data.vans);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const vanElement = vans.map((van) => (
     <div key={van.id} className="van-tile">
@@ -21,7 +30,6 @@ const Vans = () => {
     </div>
   ));
 
-  console.log(data);
   return (
     <div className="vans">
       <h1>Explore our vans options</h1>
