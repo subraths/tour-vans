@@ -33,6 +33,7 @@ const Vans = () => {
   return (
     <div className="vans">
       <h1>Explore our vans options</h1>
+
       <div className="vans-container">{vanElement}</div>
     </div>
   );
