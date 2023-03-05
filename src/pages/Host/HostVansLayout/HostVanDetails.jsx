@@ -1,9 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 
 const HostVanDetails = () => {
-  const [vans, setVans] = useOutletContext();
-
-  console.log(vans);
+  const { vans } = useOutletContext();
 
   return (
     <>

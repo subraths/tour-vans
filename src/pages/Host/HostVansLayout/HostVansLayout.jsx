@@ -58,7 +58,7 @@ const HostVansLayout = () => {
             Photos
           </NavLink>
         </nav>
-        <Outlet context={[vans, setVans]} />
+        <Outlet context={{ vans }} />
       </div>
     </div>
   );
