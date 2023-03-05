@@ -32,7 +32,7 @@ const HostVansLayout = () => {
       <div className="host-van-detail-page-container">
         <div className="host-van-page">
           <img src={vans.imageUrl} />
-          <div>
+          <div style={{ margin: "auto 0 auto 1em" }}>
             <span className={`van-type ${vans.type}`}>{vans.type}</span>
             <h2>{vans.name}</h2>
             <h3>
@@ -41,7 +41,7 @@ const HostVansLayout = () => {
             </h3>
           </div>
         </div>
-        <nav>
+        <nav style={{ paddingLeft: "0" }}>
           <NavLink to="." end style={(obj) => (obj.isActive ? styles : null)}>
             Details
           </NavLink>
