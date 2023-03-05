@@ -51,6 +51,13 @@ nav a:last-child {
   margin-right: 0;
 }
 
+.active-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: bold;
+  color: #161616;
+}
+
 /* Home component */
 
 .hero-container {
@@ -88,12 +95,16 @@ section h1 {
 /* Footer Component */
 
 footer {
-  text-align: center;
   padding: 1.5em 0;
   font-size: 0.875rem;
   background: #252525;
   color: #aaaaaa;
   font-weight: 500;
+  display: flex;
+  flex-shrink: 0;
+  margin-top: auto;
+  justify-content: center;
+  align-items: center;
 }
 
 /* vans */
@@ -197,4 +208,78 @@ footer {
   border: none;
   border-radius: 5px;
   color: #fff;
+}
+
+/* Host */
+
+.host-vans-container {
+  max-width: 780px;
+  background: #fff7ed;
+  color: #161616;
+}
+
+.host-vans-container h2 {
+  margin: 0 auto 1em 0;
+}
+
+.host-van {
+  background: #fff;
+  color: #161616;
+  display: flex;
+  padding: 1em;
+  margin-bottom: 1em;
+  text-decoration: none;
+}
+
+.host-van img {
+  max-width: 100px;
+  border-radius: 5px;
+}
+
+.host-van-info {
+  margin: auto auto auto 1em;
+}
+
+.host-van-info h3 {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+.host-van-info span {
+  color: #4d4d4d;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.host-van-page-container {
+  margin: 0 1em;
+}
+
+.host-van-page img {
+  max-width: 150px;
+  border-radius: 5px;
+}
+
+.host-van-detail-page-container {
+  margin-top: 1em;
+  background: #fff;
+  padding: 1em;
+  color: #161616;
+}
+
+.host-van-page {
+  display: flex;
+}
+
+.host-van-page > div {
+  margin-left: 1em;
+}
+
+.host-van-page > div > span {
+  font-weight: 600;
+  padding: 0.5em 1em;
+}
+
+.host-van-page-container a {
+  color: #161616;
+  text-decoration: none;
 }
