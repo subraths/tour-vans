@@ -6,6 +6,13 @@ const HostVansLayout = () => {
 
   const [vans, setVans] = useState([]);
 
+  const styles = {
+    color: "#161616",
+    textDecoration: "underline",
+    textUnderlineOffset: "3px",
+    fontWeight: "bold",
+  };
+
   const fetchData = async () => {
     const res = await fetch(`/api/host/vans/${params.id}`);
     const data = await res.json();
@@ -35,22 +42,18 @@ const HostVansLayout = () => {
           </div>
         </div>
         <nav>
-          <NavLink
-            to="."
-            className={({ isActive }) => (isActive ? "active-link" : null)}
-            end
-          >
+          <NavLink to="." end style={(obj) => (obj.isActive ? styles : null)}>
             Details
           </NavLink>
           <NavLink
             to={`pricing`}
-            className={({ isActive }) => (isActive ? "active-link" : null)}
+            style={(obj) => (obj.isActive ? styles : null)}
           >
             Pricing
           </NavLink>
           <NavLink
             to={`photos`}
-            className={({ isActive }) => (isActive ? "active-link" : null)}
+            style={(obj) => (obj.isActive ? styles : null)}
           >
             Photos
           </NavLink>
