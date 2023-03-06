@@ -13,6 +13,7 @@ import HostVansLayout from "./pages/Host/HostVansLayout/HostVansLayout";
 import HostVanDetails from "./pages/Host/HostVansLayout/HostVanDetails";
 import HostVanPricing from "./pages/Host/HostVansLayout/HostVanPricing";
 import HostVanPhotos from "./pages/Host/HostVansLayout/HostVanPhotos";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
               <Route path="photos" element={<HostVanPhotos />} />
             </Route>
           </Route>
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

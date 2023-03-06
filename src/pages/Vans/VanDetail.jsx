@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 const VanDetail = () => {
   const params = useParams();
+  const location = useLocation();
+
+  const search = location.state?.search || "";
+  const type = location.state?.type || "all";
 
   const [van, setVan] = useState(null);
 
@@ -20,6 +24,19 @@ const VanDetail = () => {
     <div className="van-detail">
       {van ? (
         <>
+          <Link
+            to={`..${search}`}
+            relative="path"
+            style={{
+              display: "block",
+              color: "#161616",
+              textDecoration: "none",
+              marginBottom: "1em",
+            }}
+          >
+            &larr; Back to{" "}
+            <span style={{ textTransform: "capitalize" }}>{type}</span> vans
+          </Link>
           <img src={van.imageUrl} />
           <span className={`van-type ${van.type}`}>{van.type}</span>
           <h1>{van.name}</h1>

@@ -33,7 +33,9 @@ const HostVansLayout = () => {
         <div className="host-van-page">
           <img src={vans.imageUrl} />
           <div style={{ margin: "auto 0 auto 1em" }}>
-            <span className={`van-type ${vans.type}`}>{vans.type}</span>
+            <span className={`van-type ${vans.type} selected`}>
+              {vans.type}
+            </span>
             <h2>{vans.name}</h2>
             <h3>
               ${vans.price}
