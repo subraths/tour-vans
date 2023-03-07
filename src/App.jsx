@@ -1,8 +1,13 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import VanDetail from "./pages/Vans/VanDetail";
-import Vans from "./pages/Vans/Vans";
+import Vans, { loader as vansLoader } from "./pages/Vans/Vans";
 import Layout from "./components/Layout";
 import Dashboard from "./pages/Host/Dashboard";
 import Income from "./pages/Host/Income";
@@ -13,17 +18,26 @@ import HostVansLayout from "./pages/Host/HostVansLayout/HostVansLayout";
 import HostVanDetails from "./pages/Host/HostVansLayout/HostVanDetails";
 import HostVanPricing from "./pages/Host/HostVansLayout/HostVanPricing";
 import HostVanPhotos from "./pages/Host/HostVansLayout/HostVanPhotos";
-import ErrorPage from "./pages/ErrorPage";
+import NotFoundPage from "./components/NotFoundPage";
+import ErrorPage from "./components/ErrorPage";
+import SignIn from "./components/SignIn";
+import AuthRequired from "./pages/AuthRequired";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="vans" element={<Vans />} />
-          <Route path="vans/:id" element={<VanDetail />} />
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="signin" element={<SignIn />} />
+        <Route
+          path="vans"
+          element={<Vans />}
+          loader={vansLoader}
+          errorElement={<ErrorPage />}
+        />
+        <Route path="vans/:id" element={<VanDetail />} />
+        <Route element={<AuthRequired />}>
           <Route path="host" element={<HostLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="income" element={<Income />} />
@@ -35,11 +49,13 @@ function App() {
               <Route path="photos" element={<HostVanPhotos />} />
             </Route>
           </Route>
-          <Route path="*" element={<ErrorPage />} />
         </Route>
-      </Routes>
-    </BrowserRouter>
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    )
   );
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
