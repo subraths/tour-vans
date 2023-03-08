@@ -20,7 +20,7 @@ import HostVanPricing from "./pages/Host/HostVansLayout/HostVanPricing";
 import HostVanPhotos from "./pages/Host/HostVansLayout/HostVanPhotos";
 import NotFoundPage from "./components/NotFoundPage";
 import ErrorPage from "./components/ErrorPage";
-import SignIn from "./components/SignIn";
+import SignIn, { action as loginAction } from "./pages/SignIn";
 import AuthRequired from "./pages/AuthRequired";
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="signin" element={<SignIn />} />
+        <Route path="signin" element={<SignIn />} action={loginAction} />
         <Route
           path="vans"
           element={<Vans />}
