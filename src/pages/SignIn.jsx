@@ -1,34 +1,41 @@
-import { useState } from "react";
-import { Form, useLocation, useNavigate } from "react-router-dom";
+import {
+  Form,
+  useActionData,
+  useLocation,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 import { loginUser } from "../api";
 
 export async function action({ request }) {
   const formData = await request.formData();
   const email = formData.get("email");
   const password = formData.get("password");
-  console.log(email, password);
+  try {
+    const data = await loginUser({ email, password });
+    localStorage.setItem("loggedIn", true);
+    return data;
+  } catch (err) {
+    return { error: err.message };
+  }
 }
 
 const SignIn = () => {
-  const [state, setState] = useState("idle");
-  const [error, setError] = useState(null);
-
   const navigate = useNavigate();
+  const navigation = useNavigation();
 
-  const prevLocation = useLocation().state?.from || "host";
-  const loginMessage = useLocation().state?.message || null;
+  const actionData = useActionData();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setState("submitting");
-    loginUser(formData)
-      .then(() => {
-        localStorage.setItem("loggedIn", true);
-        navigate(prevLocation, { replace: true });
-      })
-      .catch((err) => setError(err))
-      .finally(() => setState("idle"));
-  };
+  const location = useLocation();
+  const prevLocation = location.state?.from || "/host";
+
+  const loginMessage = location.state?.message || null;
+
+  console.log(location);
+
+  if (actionData?.token) {
+    navigate(prevLocation, { replace: true });
+  }
 
   return (
     <div className="login-container">
@@ -36,7 +43,8 @@ const SignIn = () => {
       <h1 style={{ textAlign: "center", marginBottom: "1em" }}>
         Sign in to your account
       </h1>
-      {error && <h3>{error.message}</h3>}
+      {actionData?.error && <h3>{actionData.error}</h3>}
+
       <Form action="/signin" method="post">
         <input
           className="login-email"
@@ -53,9 +61,9 @@ const SignIn = () => {
         <button
           className="btn-primary login-btn"
           type="submit"
-          disabled={state === "submitting"}
+          disabled={navigation.state === "submitting"}
         >
-          {state === "submitting" ? "Logging in..." : "Log In"}
+          {navigation.state === "submitting" ? "Logging in..." : "Log In"}
         </button>
       </Form>
     </div>

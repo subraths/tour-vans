@@ -377,3 +377,7 @@ footer {
   font-size: 1em;
   margin: 1em 0;
 }
+
+.login-btn:disabled {
+  background: #aaa;
+}
