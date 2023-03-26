@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Form,
   useActionData,
@@ -11,10 +12,12 @@ export async function action({ request }) {
   const formData = await request.formData();
   const email = formData.get("email");
   const password = formData.get("password");
+  const from = formData.get("from");
+
   try {
     const data = await loginUser({ email, password });
     localStorage.setItem("loggedIn", true);
-    return data;
+    return { ...data, from };
   } catch (err) {
     return { error: err.message };
   }
@@ -27,15 +30,16 @@ const SignIn = () => {
   const actionData = useActionData();
 
   const location = useLocation();
-  const prevLocation = location.state?.from || "/host";
+  const from = location.state?.from || "/host";
 
   const loginMessage = location.state?.message || null;
 
-  console.log(location);
-
-  if (actionData?.token) {
-    navigate(prevLocation, { replace: true });
-  }
+  useEffect(() => {
+    console.log("data running: ", actionData);
+    if (actionData?.token && actionData.from) {
+      navigate(actionData.from, { replace: true });
+    }
+  }, [actionData]);
 
   return (
     <div className="login-container">
@@ -58,6 +62,7 @@ const SignIn = () => {
           type="password"
           name="password"
         />
+        <input type="hidden" value={from} name="from" />
         <button
           className="btn-primary login-btn"
           type="submit"

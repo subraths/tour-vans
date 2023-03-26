@@ -1,33 +1,33 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Suspense, useEffect, useState } from "react";
+import { Await, defer, Link, useLoaderData } from "react-router-dom";
+import { getHostVans } from "../../api";
+
+export function loader() {
+  return defer({ hostVans: getHostVans() });
+}
 
 const HostVans = () => {
-  const [vans, setVans] = useState([]);
+  const loaderPromise = useLoaderData();
 
-  const fetchData = async () => {
-    const res = await fetch("/api/host/vans");
-    const data = await res.json();
-    setVans(data.vans);
+  const vansListElement = (vans) => {
+    const vansElement = vans.map((van) => (
+      <Link to={van.id} className="host-van" key={van.id}>
+        <img src={van.imageUrl} />
+        <div className="host-van-info">
+          <h3>{van.name}</h3>
+          <span>${van.price}/day</span>
+        </div>
+      </Link>
+    ));
+    return vansElement;
   };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const vansElement = vans.map((van) => (
-    <Link to={van.id} className="host-van" key={van.id}>
-      <img src={van.imageUrl} />
-      <div className="host-van-info">
-        <h3>{van.name}</h3>
-        <span>${van.price}/day</span>
-      </div>
-    </Link>
-  ));
 
   return (
     <section className="host-vans-container">
       <h2>Your listed vans</h2>
-      {vansElement}
+      <Suspense fallback={<span>loading...</span>}>
+        <Await resolve={loaderPromise.hostVans}>{vansListElement}</Await>
+      </Suspense>
     </section>
   );
 };
