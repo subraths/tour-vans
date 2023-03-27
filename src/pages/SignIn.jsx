@@ -35,7 +35,6 @@ const SignIn = () => {
   const loginMessage = location.state?.message || null;
 
   useEffect(() => {
-    console.log("data running: ", actionData);
     if (actionData?.token && actionData.from) {
       navigate(actionData.from, { replace: true });
     }
