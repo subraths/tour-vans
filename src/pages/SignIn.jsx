@@ -55,12 +55,14 @@ const SignIn = () => {
           placeholder="Email"
           type="text"
           name="email"
+          defaultValue="b@b.com"
         />
         <input
           className="login-password"
           placeholder="Password"
           type="password"
           name="password"
+          defaultValue="p123"
         />
         <input type="hidden" value={from} name="from" />
         <button
